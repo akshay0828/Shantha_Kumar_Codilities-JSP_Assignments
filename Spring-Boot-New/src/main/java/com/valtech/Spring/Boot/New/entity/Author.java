@@ -27,6 +27,7 @@ public class Author {
 	
 	@OneToOne(targetEntity=Address.class)
 	@JoinColumn(name="address_id",referencedColumnName="id")
+	//@Embedded
 	private Address address;
 	
 	@ManyToMany(targetEntity=Book.class,cascade={CascadeType.MERGE,CascadeType.PERSIST},mappedBy="Author")
@@ -40,12 +41,11 @@ public class Author {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public Author(String name, String phoneNo,Address address) {
+	public Author(String name, String phoneNo) {
 		super();
 		this.name = name;
 		this.phoneNo = phoneNo;
-		this.address=address;
-		
+				
 	}
 	
 	

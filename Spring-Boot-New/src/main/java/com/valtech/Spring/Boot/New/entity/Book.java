@@ -19,8 +19,8 @@ import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 @Entity
-//@Inheritance(strategy=InheritanceType.SINGLE_TABLE)
-//@Table(name="allbooks")
+@Inheritance(strategy=InheritanceType.SINGLE_TABLE)
+@Table(name="allbooks")
 @DiscriminatorColumn(name="dics")
 @DiscriminatorValue("book")
 public class Book {
@@ -42,6 +42,7 @@ public class Book {
 	
 	
 	@ManyToMany(targetEntity=Author.class,cascade={CascadeType.MERGE,CascadeType.PERSIST})
+	@JoinColumn(name="author_id",referencedColumnName="id")
 	
 	@JoinTable(name="Author_book",joinColumns=@JoinColumn(name="book_id",referencedColumnName="id"),
 	inverseJoinColumns=@JoinColumn(name="author_id",referencedColumnName="id"))

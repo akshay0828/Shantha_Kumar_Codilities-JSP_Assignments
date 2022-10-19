@@ -35,8 +35,9 @@ public class AddressRestController {
 	 
 		@GetMapping("/api/address/{id}")
 	 public Address getAddress(@PathVariable("id") int id){
-			Address author=addressService.getAddress(id);
-			return author;
+			
+			//Address address=addressService.getAddress(id);
+			return addressService.getAddress(id);
 
 	 }
 		

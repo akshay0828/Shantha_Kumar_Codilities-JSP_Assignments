@@ -27,7 +27,7 @@ public class Publisher {
 	private Address address;
 	
 	@OneToMany(targetEntity=Book.class,cascade={CascadeType.MERGE,CascadeType.PERSIST},fetch=FetchType.LAZY,mappedBy="publisher")
-	//@JoinColumn(name="book_id",referencedColumnName="id")
+	// @JoinColumn(name="book_id",referencedColumnName="id")
 	private Set<Book> books;
 
 	public Publisher() {

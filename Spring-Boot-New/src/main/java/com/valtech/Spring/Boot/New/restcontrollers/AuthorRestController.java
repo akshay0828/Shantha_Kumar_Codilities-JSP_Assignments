@@ -1,5 +1,6 @@
 package com.valtech.Spring.Boot.New.restcontrollers;
 
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,10 +14,14 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.valtech.Spring.Boot.New.entity.Address;
 import com.valtech.Spring.Boot.New.entity.Author;
+import com.valtech.Spring.Boot.New.entity.Book;
 import com.valtech.Spring.Boot.New.entity.Car;
 import com.valtech.Spring.Boot.New.service.AddressService;
 import com.valtech.Spring.Boot.New.service.AuthorService;
+import com.valtech.Spring.Boot.New.service.BookService;
 import com.valtech.Spring.Boot.New.service.CarService;
+
+
 
 
 
@@ -28,15 +33,24 @@ public class AuthorRestController {
 	 private AuthorService authorService;
 	@Autowired
 	 private AddressService addressService;
+	@Autowired
+	private BookService bookservice;
 		
 		@PostMapping("/api/author")
 		public Author save(@RequestBody Author author){
-			ModelAndView view=new ModelAndView("car/list");
+			ModelAndView view=new ModelAndView("author/list");
 		
-			Address a=new Address("mandya2","Blr","Kar",56078);
-			addressService.save(a);
+			//Address a=new Address("mandya2","Blr","Kar",56078);
+			//addressService.save(a);
+			//Author author1=authorService.save(author);
+			//author1.setAddress(a);
+			
 			Author author1=authorService.save(author);
-			author1.setAddress(a);
+			Book ac=new Book("book2","22-1-1");
+			//Book ac1=new Book("book2","22-1-1");
+			author.addBook(ac);
+			
+			//author1.addBook(ac);
 			
 			return author1;
 			
@@ -49,16 +63,16 @@ public class AuthorRestController {
 		}
 	 
 		@GetMapping("/api/author/{id}")
-	 public Author getCar(@PathVariable("id") int id){
+	 public Author getAuthor(@PathVariable("id") int id){
 			Author author=authorService.getAuthor(id);
 			
 			return author;
-//		 return carService.getCar(id);
+
 	 }
 		
 		@PutMapping("/api/author/{id}")
 	    public Author updateCar(@PathVariable("id")int id, @RequestBody Author author){
-//	        car.getId()==id
+
 			author.setId(id);
 	        return authorService.update(author);
 	    }
