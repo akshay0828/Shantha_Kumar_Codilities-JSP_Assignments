@@ -14,4 +14,11 @@ Hibernate Oracle to H2_Database_Migration-  Project_name(library)
 Spring Rest api Config of Above project(library) -Project_name(Spring-Boot-New)
 
 
+_________________________________________________________________________________________________________________
+
+MicroServices Assignment 20-oct-2022
+
+AccountService & Txservice
+
+
 
