@@ -14,4 +14,6 @@ public interface TxService {
 
 	List<Tx> getAllTx();
 
+	List<Tx> getAllTxByAccount(long id);
+
 }

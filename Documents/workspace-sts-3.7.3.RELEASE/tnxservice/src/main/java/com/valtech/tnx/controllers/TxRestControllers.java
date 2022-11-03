@@ -24,7 +24,7 @@ public class TxRestControllers {
     }
     
     
-    @PostMapping("/api/txs")
+    @PostMapping("/api/txs/")
     public Tx createTx(@RequestBody Tx tx){
         return txService.createTx(tx);
     }
@@ -34,10 +34,18 @@ public class TxRestControllers {
         return txService.getTx(id);
         }
     
-    @GetMapping("/api/txs")
+    @GetMapping("/api/txs/")
     public List<Tx>getTxs(){
         return txService.getAllTx();
     }
+    
+    
+    @GetMapping("/api/txs/accounts/{id}")
+    public List<Tx> getAllTxForAccount(@PathVariable("id") long id){
+    	return txService.getAllTxByAccount(id);
+    	
+    }
+
 
 
 }
